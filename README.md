@@ -12,7 +12,8 @@ gates and reusable skills.
 |---|---|---|
 | `ellmos-lock-master` | File-based locks for mixed agent teams; hooks block edits and pushes a foreign lock covers | [ellmos-ai/lock-master](https://github.com/ellmos-ai/lock-master) |
 | `workflowhooker` | Closing gate with one rework round, drift and scope warnings | [ellmos-ai/workflowhooker](https://github.com/ellmos-ai/workflowhooker) |
-| `ellmos-dev-quality` | Bug sweeps, bug-fix protocol, zipper merges, Mermaid lint, pre-publication checks, renames, dev cycle | `plugins/ellmos-dev-quality` (generated) |
+| `ellmos-dev-quality` | Bug sweeps, bug-fix protocol, zipper merges, pre-publication checks, renames, dev cycle | `plugins/ellmos-dev-quality` (generated) |
+| `ellmos-mermaid-lint` | Mermaid blocks checked with the real parser and confirmed on the GitHub page (installs npm packages, so marketplace only) | `plugins/ellmos-mermaid-lint` (generated) |
 | `ellmos-decision-kit` | Decide, decision briefings, decision shots, dependency paths, one-piece drafts | `plugins/ellmos-decision-kit` (generated) |
 
 ## How this repository is built

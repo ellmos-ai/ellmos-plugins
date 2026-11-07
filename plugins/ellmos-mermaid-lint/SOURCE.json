@@ -1,0 +1,9 @@
+{
+  "skills_repo": "ellmos-ai/skills",
+  "commit": "1a4e610",
+  "skills": [
+    {
+      "src": "skills/dev/mermaid-lint"
+    }
+  ]
+}

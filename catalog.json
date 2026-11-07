@@ -49,17 +49,16 @@
     {
       "name": "ellmos-dev-quality",
       "kind": "skills",
-      "version": "0.2.0",
-      "description": "Skills for systematic bug work, section-by-section merges, Mermaid diagrams that render on GitHub and pre-publication checks.",
+      "version": "0.3.0",
+      "description": "Skills for systematic bug work, section-by-section merges, safe renames and pre-publication checks.",
       "examples": [
         "\"Run a systematic bug sweep over this repository and list the findings by area.\" (bugsweep)",
         "\"main and my feature branch both changed the parser; merge them without dropping either side's work.\" (zipper-merge)",
-        "\"GitHub shows 'Unable to render rich display' in docs/ - find and fix the broken Mermaid diagrams.\" (mermaid-lint)"
+        "\"Customers are charged too much when a coupon is applied - find the cause and fix it.\" (bugfix-protocol)"
       ],
       "keywords": [
         "debugging",
         "merge",
-        "mermaid",
         "publishing",
         "refactoring",
         "quality"
@@ -74,9 +73,6 @@
         {
           "src": "skills/dev/reissverschluss-merge",
           "name": "zipper-merge"
-        },
-        {
-          "src": "skills/dev/mermaid-lint"
         },
         {
           "src": "skills/dev/repo-publish-check"
@@ -97,7 +93,38 @@
         "bach": "yes",
         "ocean": "yes"
       },
-      "compatibility_note": "Agent Skills format, usable by any Agent Skills client. mermaid-lint needs node and git and installs its npm dependencies when run."
+      "compatibility_note": "Agent Skills format, usable by any Agent Skills client. No package installs."
+    },
+    {
+      "name": "ellmos-mermaid-lint",
+      "kind": "skills",
+      "version": "0.1.0",
+      "description": "Checks Mermaid blocks in Markdown with the real Mermaid parser and confirms on the GitHub page that they render.",
+      "examples": [
+        "\"GitHub shows 'Unable to render rich display' in docs/ - find and fix the broken Mermaid diagrams.\" (mermaid-lint)"
+      ],
+      "keywords": [
+        "mermaid",
+        "markdown",
+        "diagrams",
+        "github",
+        "quality"
+      ],
+      "skills": [
+        {
+          "src": "skills/dev/mermaid-lint"
+        }
+      ],
+      "compatibility": {
+        "claude_code": "yes",
+        "claude_directory": "not submitted (installs npm packages)",
+        "codex": "yes",
+        "gemini_antigravity": "untested",
+        "kimi": "untested",
+        "bach": "yes",
+        "ocean": "yes"
+      },
+      "compatibility_note": "Agent Skills format, usable by any Agent Skills client. Needs node and git and installs its npm dependencies (mermaid, jsdom, playwright-core) when run, so it is offered in this marketplace only and not in the Claude directory."
     },
     {
       "name": "ellmos-decision-kit",

@@ -1,6 +1,6 @@
 # ellmos-dev-quality
 
-Skills for systematic bug work, section-by-section merges, Mermaid diagrams that render on GitHub and pre-publication checks.
+Skills for systematic bug work, section-by-section merges, safe renames and pre-publication checks.
 
 This plugin bundles skills that are maintained in [ellmos-ai/skills](https://github.com/ellmos-ai/skills) and
 generated into this folder by `tools/build.py` (source commit `1a4e610`). Edit the skills there, not here.
@@ -10,7 +10,6 @@ generated into this folder by `tools/build.py` (source commit `1a4e610`). Edit t
 - `bugsweep`
 - `bugfix-protocol`
 - `zipper-merge`
-- `mermaid-lint`
 - `repo-publish-check`
 - `migrate-rename`
 - `dev-cycle`
@@ -19,7 +18,7 @@ generated into this folder by `tools/build.py` (source commit `1a4e610`). Edit t
 
 1. "Run a systematic bug sweep over this repository and list the findings by area." (bugsweep)
 2. "main and my feature branch both changed the parser; merge them without dropping either side's work." (zipper-merge)
-3. "GitHub shows 'Unable to render rich display' in docs/ - find and fix the broken Mermaid diagrams." (mermaid-lint)
+3. "Customers are charged too much when a coupon is applied - find the cause and fix it." (bugfix-protocol)
 
 ## Install
 
@@ -45,7 +44,7 @@ command it describes; nothing is sent anywhere by the plugin itself. Privacy and
 | BACH | yes |
 | Ocean | yes |
 
-Agent Skills format, usable by any Agent Skills client. mermaid-lint needs node and git and installs its npm dependencies when run.
+Agent Skills format, usable by any Agent Skills client. No package installs.
 
 ## License
 

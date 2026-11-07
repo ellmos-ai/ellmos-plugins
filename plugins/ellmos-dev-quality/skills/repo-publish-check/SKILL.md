@@ -2,7 +2,7 @@
 name: repo-publish-check
 description: User-neutral repository review before publication or during a later public re-check. Covers privacy, secrets, licenses, third-party content, documentation, and approval status without publishing the repository itself.
 license: MIT
-compatibility: Agent Skills format, usable by any Agent Skills client. mermaid-lint needs node and git and installs its npm dependencies when run.
+compatibility: Agent Skills format, usable by any Agent Skills client. No package installs.
 metadata:
   ellmos-source: ellmos-ai/skills@1a4e610:skills/dev/repo-publish-check
   ellmos-version: 1.6.0

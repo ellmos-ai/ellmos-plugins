@@ -2,7 +2,7 @@
 name: zipper-merge
 description: 'Zipper merge procedure for high-conflict branch merges: When two divergent branches or a PR and its target branch BOTH carry valuable, seemingly incompatible changes, do not arbitrarily pick one side. Compare section by section using a decision table (Take/Why), commit incrementally, and push only upon completion. Final escalation tier: Rebuild rather than merge — extract intent/functionality and rebuild cleanly.'
 license: MIT
-compatibility: Agent Skills format, usable by any Agent Skills client. mermaid-lint needs node and git and installs its npm dependencies when run.
+compatibility: Agent Skills format, usable by any Agent Skills client. No package installs.
 metadata:
   ellmos-source: ellmos-ai/skills@1a4e610:skills/dev/reissverschluss-merge
   ellmos-version: 1.0.0
