@@ -2,7 +2,7 @@
 name: bugsweep
 description: Systematic bug sweep with a codebase-scaled target value, doubling escalation, area tracking, and final verification. Use on /bugsweep or whenever the user requests a systematic bug pass.
 license: MIT
-compatibility: Agent Skills format, usable by any Agent Skills client. mermaid-lint needs node and git and installs its npm dependencies when run.
+compatibility: Agent Skills format, usable by any Agent Skills client. No package installs.
 metadata:
   ellmos-source: ellmos-ai/skills@1a4e610:skills/dev/bugsweep
   ellmos-version: 1.1.0

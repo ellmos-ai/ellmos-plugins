@@ -2,7 +2,7 @@
 name: migrate-rename
 description: Evolutionary file renaming with wrapper files. Enables renames without hard breaks — references are organically updated through usage.
 license: MIT
-compatibility: Agent Skills format, usable by any Agent Skills client. mermaid-lint needs node and git and installs its npm dependencies when run.
+compatibility: Agent Skills format, usable by any Agent Skills client. No package installs.
 metadata:
   ellmos-source: ellmos-ai/skills@1a4e610:skills/dev/migrate-rename
   ellmos-version: 1.0.0

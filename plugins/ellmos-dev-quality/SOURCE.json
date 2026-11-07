@@ -13,9 +13,6 @@
       "name": "zipper-merge"
     },
     {
-      "src": "skills/dev/mermaid-lint"
-    },
-    {
       "src": "skills/dev/repo-publish-check"
     },
     {

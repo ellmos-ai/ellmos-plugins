@@ -2,7 +2,7 @@
 name: bugfix-protocol
 description: 'Use for ANY bug report or debugging request, before changing code, even if the cause seems obvious: wrong output or totals (''customers pay too much'', ''X returns -1 instead of 0''), errors, crashes, exceptions, failing tests, regressions, ''debug this'', ''find and fix the bug'', ''why does ... happen'', /bugfix. Works through six phases instead of patching the first suspicious line: quick checks, diagnosis, a minimal test that reproduces the bug, a fix at the root cause rather than the symptom, verification, and a short bug report (root cause, fix, verification) the user can check. Especially valuable when the symptom shows up far from the cause, for regressions and intermittent failures. Do NOT use for a systematic sweep of a whole codebase for unknown bugs (bugsweep).'
 license: MIT
-compatibility: Agent Skills format, usable by any Agent Skills client. mermaid-lint needs node and git and installs its npm dependencies when run.
+compatibility: Agent Skills format, usable by any Agent Skills client. No package installs.
 metadata:
   ellmos-source: ellmos-ai/skills@1a4e610:skills/dev/bugfix-protocol
   ellmos-version: 1.1.0

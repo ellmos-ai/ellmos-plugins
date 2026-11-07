@@ -1,0 +1,21 @@
+{
+  "name": "ellmos-mermaid-lint",
+  "description": "Checks Mermaid blocks in Markdown with the real Mermaid parser and confirms on the GitHub page that they render.",
+  "version": "0.1.0",
+  "author": {
+    "name": "ellmos-ai"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/ellmos-ai/ellmos-plugins",
+  "repository": "https://github.com/ellmos-ai/ellmos-plugins",
+  "keywords": [
+    "mermaid",
+    "markdown",
+    "diagrams",
+    "github",
+    "quality"
+  ],
+  "documentationUrl": "https://github.com/ellmos-ai/ellmos-plugins/tree/main/plugins/ellmos-mermaid-lint",
+  "supportUrl": "https://ellmos-ai.github.io/plugins.html#support",
+  "privacyPolicyUrl": "https://ellmos-ai.github.io/plugins.html#privacy"
+}

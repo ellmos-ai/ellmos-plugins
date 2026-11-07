@@ -2,7 +2,7 @@
 name: mermaid-lint
 description: Finds and fixes Mermaid diagrams that GitHub refuses to render ("Unable to render rich display"). Checks every ```mermaid block with the real Mermaid parser without a browser, then proves the result against the live GitHub page.
 license: MIT
-compatibility: Agent Skills format, usable by any Agent Skills client. mermaid-lint needs node and git and installs its npm dependencies when run.
+compatibility: Agent Skills format, usable by any Agent Skills client. Needs node and git and installs its npm dependencies (mermaid, jsdom, playwright-core) when run, so it is offered in this marketplace only and not in the Claude directory.
 metadata:
   ellmos-source: ellmos-ai/skills@1a4e610:skills/dev/mermaid-lint
   ellmos-version: 1.0.0

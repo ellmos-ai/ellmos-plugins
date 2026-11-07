@@ -24,7 +24,12 @@
     {
       "name": "ellmos-dev-quality",
       "source": "./plugins/ellmos-dev-quality",
-      "description": "Skills for systematic bug work, section-by-section merges, Mermaid diagrams that render on GitHub and pre-publication checks."
+      "description": "Skills for systematic bug work, section-by-section merges, safe renames and pre-publication checks."
+    },
+    {
+      "name": "ellmos-mermaid-lint",
+      "source": "./plugins/ellmos-mermaid-lint",
+      "description": "Checks Mermaid blocks in Markdown with the real Mermaid parser and confirms on the GitHub page that they render."
     },
     {
       "name": "ellmos-decision-kit",
