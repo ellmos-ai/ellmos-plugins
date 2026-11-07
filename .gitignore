@@ -2,5 +2,7 @@ __pycache__/
 *.tmp
 LOCK*.txt
 
-# claude plugin eval run results
-plugins/*/evals/results/
+# Eval suites live in evals/<plugin>/ and are copied into the plugin only for a run (see README);
+# the Claude directory refuses their scaffold scripts, so they must never be committed inside plugins/.
+plugins/*/evals/
+evals/*/results/

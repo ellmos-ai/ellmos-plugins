@@ -16,7 +16,10 @@
       "src": "skills/dev/repo-publish-check"
     },
     {
-      "src": "skills/dev/migrate-rename"
+      "src": "skills/dev/migrate-rename",
+      "exclude": [
+        "scripts"
+      ]
     },
     {
       "src": "skills/dev/dev-cycle"

@@ -1,7 +1,7 @@
 {
   "name": "ellmos-dev-quality",
   "description": "Skills for systematic bug work, section-by-section merges, safe renames and pre-publication checks.",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": {
     "name": "ellmos-ai"
   },

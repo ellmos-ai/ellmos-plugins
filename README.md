@@ -25,6 +25,12 @@ gates and reusable skills.
   here. Do not edit `plugins/` by hand; change the skills repository or the catalog and run
   `python tools/build.py --skills-repo <path>`.
 - Each generated plugin records its source commit in `SOURCE.json`.
+- A plugin submitted to the Claude directory may only hold Markdown, text, JSON, YAML, images and its LICENSE
+  (rule for organizations that are not Verified). `tools/build.py` stops when such a plugin contains anything else;
+  a skill entry in `catalog.json` can leave folders out with `"exclude": ["scripts"]`.
+- Eval suites live in `evals/<plugin>/`, not inside the plugin, because their scaffold scripts are shell files. To run
+  them, copy the suite in, run, and remove the copy (`plugins/*/evals/` is ignored by git):
+  `cp -r evals/ellmos-dev-quality plugins/ellmos-dev-quality/evals && claude plugin eval plugins/ellmos-dev-quality --scaffold; rm -r plugins/ellmos-dev-quality/evals`.
 
 ## Compatibility
 
