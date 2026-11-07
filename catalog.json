@@ -14,8 +14,8 @@
       "source": {
         "source": "github",
         "repo": "ellmos-ai/lock-master",
-        "ref": "v1.8.1",
-        "sha": "fef919149ea647cbf4696a1b875b25fe1f280478"
+        "ref": "v1.9.0",
+        "sha": "d11333eaba683a84491d29018b31ef7cfe966ed9"
       },
       "description": "File-based locks for mixed agent teams: hooks block edits and pushes a foreign lock covers; /lock, /unlock, /locks.",
       "compatibility": {
