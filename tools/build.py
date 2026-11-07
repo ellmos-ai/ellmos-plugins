@@ -55,7 +55,8 @@ def split_frontmatter(text: str) -> tuple[dict, str]:
     return yaml.safe_load(match.group(1)) or {}, match.group(2)
 
 
-def convert_skill(src: Path, dst: Path, name: str, compat_note: str, source_ref: str) -> None:
+def convert_skill(src: Path, dst: Path, name: str, compat_note: str, source_ref: str,
+                  exclude: tuple[str, ...] = ()) -> None:
     main = src / "SKILL.en.md" if (src / "SKILL.en.md").exists() else src / "SKILL.md"
     meta, body = split_frontmatter(main.read_text(encoding="utf-8"))
     description = " ".join(str(meta.get("description", "")).split())
@@ -74,7 +75,8 @@ def convert_skill(src: Path, dst: Path, name: str, compat_note: str, source_ref:
         shutil.rmtree(dst)
     for item in src.rglob("*"):
         rel = item.relative_to(src)
-        if item.is_dir() or SKIP_NAMES.match(item.name) or "__pycache__" in rel.parts or "node_modules" in rel.parts:
+        if (item.is_dir() or SKIP_NAMES.match(item.name) or "__pycache__" in rel.parts or "node_modules" in rel.parts
+                or rel.parts[0] in exclude):
             continue
         target = dst / rel
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -98,7 +100,7 @@ def build_skill_plugin(entry: dict, skills_repo: Path, commit: str) -> None:
         src = skills_repo / skill["src"]
         name = skill.get("name") or src.name
         convert_skill(src, skills_out / name, name, entry["compatibility_note"],
-                      f"ellmos-ai/skills@{commit}:{skill['src']}")
+                      f"ellmos-ai/skills@{commit}:{skill['src']}", tuple(skill.get("exclude", ())))
         names.append(name)
     manifest = {"name": entry["name"], "description": entry["description"], "version": entry["version"],
                 "author": {"name": "ellmos-ai"}, "license": "MIT",
@@ -142,6 +144,23 @@ MIT
     shutil.copy2(ROOT / "LICENSE", out / "LICENSE")
     write(out / "SOURCE.json", json.dumps({"skills_repo": "ellmos-ai/skills", "commit": commit,
                                            "skills": entry["skills"]}, indent=2) + "\n")
+    if not str(entry.get("compatibility", {}).get("claude_directory", "")).startswith("not submitted"):
+        check_directory_types(out)
+
+
+# What the Claude directory accepts from organizations that are not Verified (refusal of 07.11.2026):
+# Markdown, text, JSON, YAML and these images; LICENSE as license text; nothing that starts with #!.
+DIRECTORY_SUFFIXES = {".md", ".txt", ".json", ".yaml", ".yml", ".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico"}
+
+
+def check_directory_types(out: Path) -> None:
+    """Fail the build when a plugin meant for the Claude directory contains a file the directory refuses."""
+    bad = [p.relative_to(out).as_posix() for p in sorted(out.rglob("*")) if p.is_file()
+           and ((p.suffix.lower() not in DIRECTORY_SUFFIXES and p.name != "LICENSE")
+                or p.read_bytes()[:2] == b"#!")]
+    if bad:
+        raise SystemExit(f"{out.name}: files the Claude directory refuses: {', '.join(bad)}. Exclude them in "
+                         "catalog.json (skill 'exclude') or mark the plugin 'not submitted'.")
 
 
 def build_mcp_plugin(entry: dict) -> None:

@@ -49,7 +49,7 @@
     {
       "name": "ellmos-dev-quality",
       "kind": "skills",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "description": "Skills for systematic bug work, section-by-section merges, safe renames and pre-publication checks.",
       "examples": [
         "\"Run a systematic bug sweep over this repository and list the findings by area.\" (bugsweep)",
@@ -78,7 +78,10 @@
           "src": "skills/dev/repo-publish-check"
         },
         {
-          "src": "skills/dev/migrate-rename"
+          "src": "skills/dev/migrate-rename",
+          "exclude": [
+            "scripts"
+          ]
         },
         {
           "src": "skills/dev/dev-cycle"
