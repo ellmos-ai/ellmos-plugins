@@ -1,0 +1,28 @@
+{
+  "skills_repo": "ellmos-ai/skills",
+  "commit": "1a4e610",
+  "skills": [
+    {
+      "src": "skills/dev/bugsweep"
+    },
+    {
+      "src": "skills/dev/bugfix-protocol"
+    },
+    {
+      "src": "skills/dev/reissverschluss-merge",
+      "name": "zipper-merge"
+    },
+    {
+      "src": "skills/dev/mermaid-lint"
+    },
+    {
+      "src": "skills/dev/repo-publish-check"
+    },
+    {
+      "src": "skills/dev/migrate-rename"
+    },
+    {
+      "src": "skills/dev/dev-cycle"
+    }
+  ]
+}

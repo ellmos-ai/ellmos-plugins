@@ -1,0 +1,21 @@
+{
+  "skills_repo": "ellmos-ai/skills",
+  "commit": "1a4e610",
+  "skills": [
+    {
+      "src": "skills/utilities/decide"
+    },
+    {
+      "src": "skills/utilities/decision-briefing"
+    },
+    {
+      "src": "skills/utilities/decision-shot"
+    },
+    {
+      "src": "skills/utilities/decision-path"
+    },
+    {
+      "src": "skills/utilities/decision-draw"
+    }
+  ]
+}

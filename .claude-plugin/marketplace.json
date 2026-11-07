@@ -1,0 +1,35 @@
+{
+  "name": "ellmos",
+  "description": "Plugins from the ellmos ecosystem: coordination for mixed agent teams, workflow gates and reusable skills.",
+  "owner": {
+    "name": "ellmos-ai"
+  },
+  "plugins": [
+    {
+      "name": "ellmos-lock-master",
+      "source": {
+        "source": "github",
+        "repo": "ellmos-ai/lock-master"
+      },
+      "description": "File-based locks for mixed agent teams: hooks block edits and pushes a foreign lock covers; /lock, /unlock, /locks."
+    },
+    {
+      "name": "workflowhooker",
+      "source": {
+        "source": "github",
+        "repo": "ellmos-ai/workflowhooker"
+      },
+      "description": "Workflow gates that measure the project state: closing gate with one rework round, drift and scope warnings."
+    },
+    {
+      "name": "ellmos-dev-quality",
+      "source": "./plugins/ellmos-dev-quality",
+      "description": "Skills for systematic bug work, section-by-section merges, Mermaid diagrams that render on GitHub and pre-publication checks."
+    },
+    {
+      "name": "ellmos-decision-kit",
+      "source": "./plugins/ellmos-decision-kit",
+      "description": "Skills to prepare, compare, sequence and sign off decisions: options with a clear recommendation, dependency maps and one-piece drafts."
+    }
+  ]
+}

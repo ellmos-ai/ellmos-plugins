@@ -1,0 +1,116 @@
+---
+name: repo-publish-check
+description: User-neutral repository review before publication or during a later public re-check. Covers privacy, secrets, licenses, third-party content, documentation, and approval status without publishing the repository itself.
+license: MIT
+compatibility: Agent Skills format, usable by any Agent Skills client. mermaid-lint needs node and git and installs its npm dependencies when run.
+metadata:
+  ellmos-source: ellmos-ai/skills@1a4e610:skills/dev/repo-publish-check
+  ellmos-version: 1.6.0
+  ellmos-category: dev
+  ellmos-anthropic-compatible: 'true'
+  ellmos-bach-compatible: 'false'
+  ellmos-standalone: 'true'
+  ellmos-dependencies: '{"tools": ["git", "gh"], "services": [], "protocols": [], "python": []}'
+---
+
+# Repo Publish Check
+
+## Purpose
+
+Review a repository before first publication or during a later public
+re-check. A negative outcome is valid. Change visibility only after the
+repository owner has explicitly approved it.
+
+This skill does not produce legal opinions. For a legally sensitive domain or
+unclear case, use the public `law-checker` skill. Neither skill replaces
+professional legal advice.
+
+## Privacy of review records
+
+Never commit review reports or risk assessments to the reviewed repository.
+Store them in a private review area outside the project or in a gitignored
+directory such as `<private-review-dir>`. Publish only the required fixes, such
+as license attribution, a privacy notice, or a more accurate description.
+
+## Review workflow
+
+1. **Define the release set:** inspect `git ls-files`, package allowlists, and
+   `.gitignore`; exclude internal notes, reports, test data, local settings,
+   and lock files. For a skill library (`SKILL*.md` files present): every
+   frontmatter must parse as YAML -- run `testing/skill_frontmatter_gate.py`
+   if it exists in the repo (`--fix` re-quotes mechanically without changing
+   wording), otherwise spot-check with `yaml.safe_load`.
+2. **Scan privacy and secrets:** search the working tree AND reachable
+   history (`git log -p --all`) for credentials, tokens, private keys, local user
+   paths (`C:\Users\<name>`, `_Local_DEV`, `OneDrive`, `CREDENTIALS`), and
+   personal data. Patterns must be loaded from a file (`grep -f`), verified with
+   a positive control. Classify and remediate every finding. Historical leaks require
+   history rewrite (`git filter-repo`) or user approval.
+3. **Verify license and provenance:** provide a suitable `LICENSE`, state what
+   it covers, and inventory third-party code, prompts, documentation, and
+   media with their origin and license.
+4. **Define purpose and boundaries:** document what the project does and does
+   not do. For law, health, finance, security, or personal data, document data
+   flows and excluded uses. Route legal questions through `law-checker`.
+5. **Review privacy and cloud use:** minimize data, disclose external
+   processing, and warn users not to post confidential case data in public
+   issues.
+6. **Review AI and product claims:** document intended purpose, role, limits,
+   and transparency notes. Do not imply certification or quality that is not
+   evidenced.
+7. **Review name, banner and presentation:** check package and repository names,
+   possible trademark conflicts, README claims, descriptions, and badges.
+   - **Mandatory banner check before public switch:**
+     * Check if a banner already exists (`assets/banner*` or root `banner.*`) and
+       is embedded in `README.md`.
+     * If missing: mandatory generation BEFORE publishing!
+     * Generation route: Antigravity / Gemini (`generate_image` or agy CLI --
+       default rule: banner/artwork to agy), fallback: Codex.
+     * Place under `assets/banner.png` (or `banner.svg`); verify file existence and
+       size on disk directly (never rely solely on model success output).
+     * Embed centered at the top of `README.md`.
+8. **Conclude and visual inspection:**
+   - Actively open banner, logo, and web views (such as repo landing page or org
+     profile) for the user's visual check (`Invoke-Item` / `Start-Process msedge`).
+   - Record findings, fixes, open risks, and a traffic-light result in the private
+     report; verify the final commit and obtain explicit owner approval before a
+     separate authorized publication step (`gh repo edit <org>/<repo> --visibility public`).
+
+## Mandatory steps after switching to public
+
+Once visibility has been switched to `public`, execute the following post-publish steps:
+
+1. **Verify banner completeness in final release/commit:**
+   - Check on GitHub that the banner renders correctly in the README (no 404, valid asset path).
+
+2. **Update organization profile README (banner + directory listing):**
+   - Every newly published repo with a banner must be indexed on the organization profile page (`<org>/.github/profile/README.md` and `profile/README_de.md`).
+   - Mechanically verify via the org profile gate:
+     ```bash
+     python testing/org_profile_gate.py --org <org>
+     ```
+   - If missing, use the snippet generated by the script, place it into the banner gallery of the matching category (e.g., Domain Tools, Modules, Orchestration), and add the repository to the profile table.
+   - Submit via branch and PR against `<org>/.github` (see `github-repo-care` step 14).
+
+3. **Star own repository:**
+   - Verify and star the new public repo for the account (`.GITHUBBOT/run.py --self-star --repo <org>/<name>` or `gh api`). See `github-repo-care` step 14.
+
+## Existing public repositories
+
+At minimum, re-check privacy and secrets, license coverage, third-party
+content, disclaimers, and public presentation. Report critical historical
+findings to the repository owner instead of silently overwriting them.
+
+An organization may maintain a private review queue and report store. Those
+belong to its private workflow, not to this public skill.
+
+## Limits
+
+- This skill does not publish anything.
+- It does not replace legal advice or an official trademark search.
+- A clean source scan does not prove that earlier public copies, registries, or
+  caches have been removed.
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for full version history.

@@ -1,0 +1,21 @@
+{
+  "name": "ellmos-decision-kit",
+  "description": "Skills to prepare, compare, sequence and sign off decisions: options with a clear recommendation, dependency maps and one-piece drafts.",
+  "version": "0.2.0",
+  "author": {
+    "name": "ellmos-ai"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/ellmos-ai/ellmos-plugins",
+  "repository": "https://github.com/ellmos-ai/ellmos-plugins",
+  "keywords": [
+    "decisions",
+    "planning",
+    "briefing",
+    "tradeoffs"
+  ],
+  "icon": "./assets/icon.png",
+  "documentationUrl": "https://github.com/ellmos-ai/ellmos-plugins/tree/main/plugins/ellmos-decision-kit",
+  "supportUrl": "https://ellmos-ai.github.io/plugins.html#support",
+  "privacyPolicyUrl": "https://ellmos-ai.github.io/plugins.html#privacy"
+}

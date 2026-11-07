@@ -1,0 +1,6 @@
+__pycache__/
+*.tmp
+LOCK*.txt
+
+# claude plugin eval run results
+plugins/*/evals/results/

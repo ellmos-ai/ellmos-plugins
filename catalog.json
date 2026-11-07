@@ -1,0 +1,147 @@
+{
+  "marketplace": {
+    "name": "ellmos",
+    "description": "Plugins from the ellmos ecosystem: coordination for mixed agent teams, workflow gates and reusable skills.",
+    "owner": {
+      "name": "ellmos-ai"
+    }
+  },
+  "skills_repo": "ellmos-ai/skills",
+  "plugins": [
+    {
+      "name": "ellmos-lock-master",
+      "kind": "external",
+      "source": {
+        "source": "github",
+        "repo": "ellmos-ai/lock-master"
+      },
+      "description": "File-based locks for mixed agent teams: hooks block edits and pushes a foreign lock covers; /lock, /unlock, /locks.",
+      "compatibility": {
+        "claude_code": "yes",
+        "claude_directory": "untested",
+        "codex": "partial",
+        "gemini_antigravity": "partial",
+        "kimi": "partial",
+        "bach": "yes",
+        "ocean": "yes"
+      },
+      "compatibility_note": "Hooks and commands need Claude Code. The LOCK*.txt convention itself is readable by any agent and by humans."
+    },
+    {
+      "name": "workflowhooker",
+      "kind": "external",
+      "source": {
+        "source": "github",
+        "repo": "ellmos-ai/workflowhooker"
+      },
+      "description": "Workflow gates that measure the project state: closing gate with one rework round, drift and scope warnings.",
+      "compatibility": {
+        "claude_code": "yes",
+        "claude_directory": "untested",
+        "codex": "partial",
+        "gemini_antigravity": "no",
+        "kimi": "partial",
+        "bach": "yes",
+        "ocean": "yes"
+      },
+      "compatibility_note": "Hooks and command need Claude Code; Codex and Kimi through workflowhooker's own hook snippets."
+    },
+    {
+      "name": "ellmos-dev-quality",
+      "kind": "skills",
+      "version": "0.2.0",
+      "description": "Skills for systematic bug work, section-by-section merges, Mermaid diagrams that render on GitHub and pre-publication checks.",
+      "examples": [
+        "\"Run a systematic bug sweep over this repository and list the findings by area.\" (bugsweep)",
+        "\"main and my feature branch both changed the parser; merge them without dropping either side's work.\" (zipper-merge)",
+        "\"GitHub shows 'Unable to render rich display' in docs/ - find and fix the broken Mermaid diagrams.\" (mermaid-lint)"
+      ],
+      "keywords": [
+        "debugging",
+        "merge",
+        "mermaid",
+        "publishing",
+        "refactoring",
+        "quality"
+      ],
+      "skills": [
+        {
+          "src": "skills/dev/bugsweep"
+        },
+        {
+          "src": "skills/dev/bugfix-protocol"
+        },
+        {
+          "src": "skills/dev/reissverschluss-merge",
+          "name": "zipper-merge"
+        },
+        {
+          "src": "skills/dev/mermaid-lint"
+        },
+        {
+          "src": "skills/dev/repo-publish-check"
+        },
+        {
+          "src": "skills/dev/migrate-rename"
+        },
+        {
+          "src": "skills/dev/dev-cycle"
+        }
+      ],
+      "compatibility": {
+        "claude_code": "yes",
+        "claude_directory": "untested",
+        "codex": "yes",
+        "gemini_antigravity": "untested",
+        "kimi": "untested",
+        "bach": "yes",
+        "ocean": "yes"
+      },
+      "compatibility_note": "Agent Skills format, usable by any Agent Skills client. mermaid-lint needs node and git and installs its npm dependencies when run."
+    },
+    {
+      "name": "ellmos-decision-kit",
+      "kind": "skills",
+      "version": "0.2.0",
+      "description": "Skills to prepare, compare, sequence and sign off decisions: options with a clear recommendation, dependency maps and one-piece drafts.",
+      "examples": [
+        "\"Our clinic app needs authentication: build our own, Auth0 or self-hosted Keycloak? GDPR and EU hosting, about 300 EUR a month, little ops capacity. Decide.\" (decide)",
+        "\"We have collected six open decisions for the release - list them with options and a clear recommendation each.\" (decision-briefing)",
+        "\"Show how these pending decisions depend on each other and which one to settle first.\" (decision-path)"
+      ],
+      "keywords": [
+        "decisions",
+        "planning",
+        "briefing",
+        "tradeoffs"
+      ],
+      "skills": [
+        {
+          "src": "skills/utilities/decide"
+        },
+        {
+          "src": "skills/utilities/decision-briefing"
+        },
+        {
+          "src": "skills/utilities/decision-shot"
+        },
+        {
+          "src": "skills/utilities/decision-path"
+        },
+        {
+          "src": "skills/utilities/decision-draw"
+        }
+      ],
+      "compatibility": {
+        "claude_code": "yes",
+        "claude_directory": "untested",
+        "codex": "yes",
+        "gemini_antigravity": "untested",
+        "kimi": "untested",
+        "bach": "yes",
+        "ocean": "yes"
+      },
+      "compatibility_note": "Agent Skills format, text only, no scripts or network access."
+    }
+  ]
+}

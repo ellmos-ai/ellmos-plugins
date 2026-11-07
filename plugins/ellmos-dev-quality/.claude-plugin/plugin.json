@@ -1,0 +1,23 @@
+{
+  "name": "ellmos-dev-quality",
+  "description": "Skills for systematic bug work, section-by-section merges, Mermaid diagrams that render on GitHub and pre-publication checks.",
+  "version": "0.2.0",
+  "author": {
+    "name": "ellmos-ai"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/ellmos-ai/ellmos-plugins",
+  "repository": "https://github.com/ellmos-ai/ellmos-plugins",
+  "keywords": [
+    "debugging",
+    "merge",
+    "mermaid",
+    "publishing",
+    "refactoring",
+    "quality"
+  ],
+  "icon": "./assets/icon.png",
+  "documentationUrl": "https://github.com/ellmos-ai/ellmos-plugins/tree/main/plugins/ellmos-dev-quality",
+  "supportUrl": "https://ellmos-ai.github.io/plugins.html#support",
+  "privacyPolicyUrl": "https://ellmos-ai.github.io/plugins.html#privacy"
+}
