@@ -32,6 +32,22 @@ gates and reusable skills.
   them, copy the suite in, run, and remove the copy (`plugins/*/evals/` is ignored by git):
   `cp -r evals/ellmos-dev-quality plugins/ellmos-dev-quality/evals && claude plugin eval plugins/ellmos-dev-quality --scaffold; rm -r plugins/ellmos-dev-quality/evals`.
 
+## Pin Governance (Security Plugins)
+
+Security-critical plugins that intercept file edits and git commands (such as `ellmos-lock-master`) MUST NOT float on unpinned branches or mutable heads. In `catalog.json` and `.claude-plugin/marketplace.json`, these plugins are pinned to both an explicit tag reference and the exact commit SHA:
+
+- **Current Pin:** `ellmos-lock-master` is pinned to `ref: "v1.9.0"` (`sha: "d11333eaba683a84491d29018b31ef7cfe966ed9"`).
+
+### Mandatory Process for Bumping a Pin
+
+Bumping a pin for a security plugin requires a strict 5-step gate before adoption:
+
+1. **Verify Annotated Tag:** Inspect the upstream tag object (e.g. `git cat-file -t <tag>`). The tag must be annotated and point to the exact target commit SHA.
+2. **Adversarial Probe & Live Acceptance Stage A (`--plugin-dir`):** Check out the tag in an isolated directory and validate its hooks using fresh `claude -p` runs with `--plugin-dir <checkout>` against the full adversarial test matrix (e.g. foreign lock denial on push/edit across all syntax forms, own lock allowance, worker-owner subagent ID resolution, and differential comparison against the previous version). Never execute marketplace updates during Stage A.
+3. **Catalog Update & Manifest Regeneration:** Update `ref` and `sha` for the plugin in `catalog.json`, run `python tools/build.py`, and run `claude plugin validate .` to verify that the generated `.claude-plugin/marketplace.json` is valid.
+4. **Pull Request & Independent Review:** Submit a pull request on `ellmos-ai/ellmos-plugins`. Review must be performed by an independent model instance or operator.
+5. **Live Acceptance Stage B (Live Marketplace Path):** Only after merge and user sign-off, execute the real update path (`claude plugin marketplace update ellmos` followed by `claude plugin update ellmos-lock-master@ellmos`). Verify the runtime status and cache path in a clean session.
+
 ## Compatibility
 
 Every plugin README carries a compatibility table (Claude Code, Claude directory, Codex, Gemini/Antigravity, Kimi,
