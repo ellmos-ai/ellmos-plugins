@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.svg" alt="ellmos-plugins banner" width="100%">
+</p>
+
 # ellmos-plugins
 
 The **ellmos** Claude Code plugin marketplace: plugins from the ellmos ecosystem for mixed agent teams, workflow
