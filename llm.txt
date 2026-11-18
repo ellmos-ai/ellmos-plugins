@@ -1,0 +1,1 @@
+See `llms.txt` and `SKILL.md` in the repository root for the canonical LLM entrypoint and product skill of `ellmos-ai/ellmos-plugins`.

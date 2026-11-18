@@ -4,6 +4,15 @@
 
 # ellmos-plugins
 
+**Language:** **English** | [Deutsch](README_de.md)
+
+[![CI](https://github.com/ellmos-ai/ellmos-plugins/actions/workflows/ci.yml/badge.svg)](https://github.com/ellmos-ai/ellmos-plugins/actions/workflows/ci.yml)
+[![Tests](https://img.shields.io/badge/tests-12%20passed-brightgreen)](#how-this-repository-is-built)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Claude Code Marketplace](https://img.shields.io/badge/Claude%20Code-Marketplace-blueviolet)](#ellmos-plugins)
+[![LLM Ready](https://img.shields.io/badge/LLM-SKILL.md%20%7C%20llms.txt-informational)](llms.txt)
+[![Verified](https://img.shields.io/badge/Verified-2026--11--18-lightgrey)](#how-this-repository-is-built)
+
 The **ellmos** Claude Code plugin marketplace: plugins from the ellmos ecosystem for mixed agent teams, workflow
 gates and reusable skills.
 
@@ -20,6 +29,14 @@ gates and reusable skills.
 | `ellmos-mermaid-lint` | Mermaid blocks checked with the real parser and confirmed on the GitHub page (installs npm packages, so marketplace only) | `plugins/ellmos-mermaid-lint` (generated) |
 | `ellmos-decision-kit` | Decide, decision briefings, decision shots, dependency paths, one-piece drafts | `plugins/ellmos-decision-kit` (generated) |
 
+### Install with your LLM
+
+Copy this prompt into Claude Code or another coding agent to add and verify the marketplace:
+
+```text
+Read https://raw.githubusercontent.com/ellmos-ai/ellmos-plugins/main/llms.txt and https://raw.githubusercontent.com/ellmos-ai/ellmos-plugins/main/SKILL.md, then guide me through adding the ellmos-ai/ellmos-plugins Claude Code marketplace and installing the plugins I need.
+```
+
 ## How this repository is built
 
 - `catalog.json` is the single source: every plugin, its description, keywords and compatibility.
@@ -35,6 +52,7 @@ gates and reusable skills.
 - Eval suites live in `evals/<plugin>/`, not inside the plugin, because their scaffold scripts are shell files. To run
   them, copy the suite in, run, and remove the copy (`plugins/*/evals/` is ignored by git):
   `cp -r evals/ellmos-dev-quality plugins/ellmos-dev-quality/evals && claude plugin eval plugins/ellmos-dev-quality --scaffold; rm -r plugins/ellmos-dev-quality/evals`.
+- Local verification: `ruff check .`, `pytest -ra -v`, and `claude plugin validate .`.
 
 ## Pin Governance (Security Plugins)
 
@@ -57,6 +75,11 @@ Bumping a pin for a security plugin requires a strict 5-step gate before adoptio
 Every plugin README carries a compatibility table (Claude Code, Claude directory, Codex, Gemini/Antigravity, Kimi,
 BACH, Ocean) generated from `catalog.json`.
 
+## Governance & Documentation
+
+- [Contributing](CONTRIBUTING.md) · [Security Policy](SECURITY.md) · [Code of Conduct](CODE_OF_CONDUCT.md) · [Changelog](CHANGELOG.md)
+- LLM Entrypoints: [SKILL.md](SKILL.md) · [llms.txt](llms.txt) · [llm.txt](llm.txt)
+
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE).

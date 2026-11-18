@@ -1,0 +1,83 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ellmos-plugins"
+version = "0.1.0"
+description = "Claude Code plugin marketplace of ellmos-ai: skill plugins and marketplace build tooling."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+  { name = "Lukas Geiger" },
+]
+keywords = [
+  "claude-code",
+  "claude-code-plugin",
+  "plugin-marketplace",
+  "agent-skills",
+  "multi-agent",
+  "ellmos",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Build Tools",
+]
+dependencies = [
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.6.0",
+  "tomli>=2.0; python_version < '3.11'",
+]
+
+[project.urls]
+Homepage = "https://github.com/ellmos-ai/ellmos-plugins"
+Repository = "https://github.com/ellmos-ai/ellmos-plugins"
+Issues = "https://github.com/ellmos-ai/ellmos-plugins/issues"
+Changelog = "https://github.com/ellmos-ai/ellmos-plugins/blob/main/CHANGELOG.md"
+Contributing = "https://github.com/ellmos-ai/ellmos-plugins/blob/main/CONTRIBUTING.md"
+"Code of Conduct" = "https://github.com/ellmos-ai/ellmos-plugins/blob/main/CODE_OF_CONDUCT.md"
+Security = "https://github.com/ellmos-ai/ellmos-plugins/blob/main/SECURITY.md"
+
+[tool.setuptools]
+py-modules = []
+packages = []
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-ra -v --strict-markers"
+xfail_strict = true
+norecursedirs = [
+  ".git",
+  ".pytest_cache",
+  ".pytest_temp",
+  ".pytest_tmp",
+  ".ruff_cache",
+  "node_modules",
+  "plugins",
+  "evals",
+  "assets",
+]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+extend-exclude = ["plugins", "evals"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
