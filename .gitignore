@@ -1,8 +1,62 @@
+# Python & Packaging
 __pycache__/
-*.tmp
-LOCK*.txt
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
 
-# Eval suites live in evals/<plugin>/ and are copied into the plugin only for a run (see README);
-# the Claude directory refuses their scaffold scripts, so they must never be committed inside plugins/.
-plugins/*/evals/
+# Test, Lint & Coverage Caches
+.pytest_cache/
+.pytest_temp/
+.pytest_tmp*/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+*.prof
+
+# Node / Eval Runtime
+node_modules/
+plugins/*/evals/*
+!plugins/ellmos-decision-kit/evals/
+!plugins/ellmos-decision-kit/evals/**
 evals/*/results/
+
+# Multi-Host Sync, Locks & Agent State
+*.tmp
+*MARKETING-LOG.txt
+LOCK*.txt
+LOCK-CACHE.*
+LOCK.orchestrator.*
+LOCK.operator.*
+LOCK.worker.*
+LOCK.thinker.*
+LOCK.reviewer.*
+LOCK.antigravity.*
+LOCK.bugsearch.*
+LOCK.dev.*
+*-ASUS-GEI*
+*-WORKSTATION*
+*-IDEAPAD*
+*_WORKSTATION*
+*-MacBook*
+TASKPLAN_*.md
+*-TASKPLAN*
+.claude/
+.codex/
+.gemini/
+.agent/
+tmpclaude-*
+
+# OS & Editor Artifacts
+Desktop.ini
+desktop.ini
+Thumbs.db
+thumbs.db
+ehthumbs.db
+*.swp
+*.swo

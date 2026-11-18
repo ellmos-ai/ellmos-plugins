@@ -1,0 +1,42 @@
+# ellmos-plugins
+
+> The ellmos Claude Code plugin marketplace (`ellmos-ai/ellmos-plugins`): coordination plugins for mixed agent teams, workflow gates, and reusable Agent Skills.
+
+## Quick Entrypoints
+
+- Marketplace manifest: `.claude-plugin/marketplace.json`
+- Single catalog source: `catalog.json`
+- Build generator: `tools/build.py` (Python >= 3.10, requires `PyYAML>=6.0`)
+- Product skill: `SKILL.md`
+- Documentation: `README.md` (EN), `README_de.md` (DE)
+- Governance: `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`, `CHANGELOG.md`
+
+## Included Plugins
+
+- `ellmos-lock-master` (external, `ellmos-ai/lock-master`, pinned `v1.9.0` @ `d11333eaba683a84491d29018b31ef7cfe966ed9`): File-based locks (`LOCK*.txt`) for mixed agent teams.
+- `workflowhooker` (external, `ellmos-ai/workflowhooker`): Closing workflow gate with rework round, drift, and scope warnings.
+- `ellmos-dev-quality` (`v0.3.1`, `./plugins/ellmos-dev-quality`): `bugsweep`, `bugfix-protocol`, `zipper-merge`, `repo-publish-check`, `migrate-rename`, `dev-cycle`.
+- `ellmos-mermaid-lint` (`v0.1.0`, `./plugins/ellmos-mermaid-lint`): `mermaid-lint` (marketplace only, installs `mermaid`, `jsdom`, `playwright-core` when run).
+- `ellmos-decision-kit` (`v0.2.0`, `./plugins/ellmos-decision-kit`): `decide`, `decision-briefing`, `decision-shot`, `decision-path`, `decision-draw`.
+
+## Install & Verify
+
+```text
+/plugin marketplace add ellmos-ai/ellmos-plugins
+/plugin install ellmos-lock-master@ellmos
+/plugin install ellmos-dev-quality@ellmos
+/plugin install ellmos-decision-kit@ellmos
+```
+
+## Development & Verification Commands
+
+- Build generated plugins from `catalog.json` and `ellmos-ai/skills`: `python tools/build.py --skills-repo <path>`
+- Validate marketplace manifest: `claude plugin validate .`
+- Run contract tests: `pytest -ra -v`
+- Lint Python files: `ruff check .`
+
+## Rules & Constraints
+
+- Never edit files under `plugins/` by hand; regenerate via `tools/build.py`.
+- Security plugins (`ellmos-lock-master`) require both tag `ref` and full commit `sha` pins plus the 5-step pin governance gate in `README.md`.
+- Plugins targeting the Claude directory may only contain `.md`, `.txt`, `.json`, `.yaml`, `.yml`, `.png`, `.jpg`, `.jpeg`, `.gif`, `.webp`, `.ico`, and `LICENSE` (no `#!` scripts).
