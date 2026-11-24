@@ -20,6 +20,10 @@ keywords = [
   "agent-skills",
   "multi-agent",
   "ellmos",
+  "workflow-automation",
+  "mermaid",
+  "file-locking",
+  "decision-support",
 ]
 classifiers = [
   "Development Status :: 4 - Beta",
@@ -46,12 +50,15 @@ dev = [
 
 [project.urls]
 Homepage = "https://github.com/ellmos-ai/ellmos-plugins"
+Documentation = "https://ellmos-ai.github.io/plugins.html"
 Repository = "https://github.com/ellmos-ai/ellmos-plugins"
 Issues = "https://github.com/ellmos-ai/ellmos-plugins/issues"
 Changelog = "https://github.com/ellmos-ai/ellmos-plugins/blob/main/CHANGELOG.md"
 Contributing = "https://github.com/ellmos-ai/ellmos-plugins/blob/main/CONTRIBUTING.md"
 "Code of Conduct" = "https://github.com/ellmos-ai/ellmos-plugins/blob/main/CODE_OF_CONDUCT.md"
 Security = "https://github.com/ellmos-ai/ellmos-plugins/blob/main/SECURITY.md"
+"Product Skill" = "https://github.com/ellmos-ai/ellmos-plugins/blob/main/SKILL.md"
+"LLM Entrypoint" = "https://github.com/ellmos-ai/ellmos-plugins/blob/main/llms.txt"
 
 [tool.setuptools]
 py-modules = []

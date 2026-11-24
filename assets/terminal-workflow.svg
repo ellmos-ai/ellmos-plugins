@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 540" width="880" height="540" role="img" aria-labelledby="title desc">
+  <title id="title">ellmos-plugins Terminal Workflow Preview</title>
+  <desc id="desc">Dark-mode terminal preview showing Claude Code marketplace installation, plugin catalog validation, and security pin verification.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080c14" />
+      <stop offset="55%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <style>
+      .sans { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif; }
+      .mono { font-family: 'Cascadia Code', Consolas, Monaco, monospace; }
+    </style>
+  </defs>
+
+  <rect width="880" height="540" rx="14" fill="url(#bg)" />
+  <rect x="1" y="1" width="878" height="538" rx="13" fill="none" stroke="#1e293b" stroke-width="2" />
+
+  <!-- Top bar -->
+  <rect x="1" y="1" width="878" height="44" rx="13" fill="#0b1220" />
+  <rect x="1" y="34" width="878" height="11" fill="#0b1220" />
+  <line x1="1" y1="45" x2="879" y2="45" stroke="#1e293b" stroke-width="1" />
+  <circle cx="24" cy="23" r="6" fill="#ef4444" />
+  <circle cx="44" cy="23" r="6" fill="#f59e0b" />
+  <circle cx="64" cy="23" r="6" fill="#10b981" />
+  <text x="90" y="27" fill="#cbd5e1" font-size="13" font-weight="600" class="mono">claude-code — ellmos-ai/ellmos-plugins (Marketplace &amp; Build Verification)</text>
+  <rect x="740" y="12" width="120" height="22" rx="11" fill="#1e1b4b" stroke="#6366f1" stroke-width="1" />
+  <text x="800" y="27" text-anchor="middle" fill="#a5b4fc" font-size="11" font-weight="600" class="sans">5 Plugins · 12 Skills</text>
+
+  <!-- Accent Strip -->
+  <rect x="24" y="58" width="832" height="3" rx="1.5" fill="url(#accent)" opacity="0.85" />
+
+  <!-- Section 1: Claude Code Marketplace Commands -->
+  <text x="28" y="84" fill="#94a3b8" font-size="11" font-weight="700" letter-spacing="1.2" class="sans">1. ADD MARKETPLACE &amp; INSTALL PLUGINS (CLAUDE CODE)</text>
+  <rect x="24" y="94" width="832" height="116" rx="8" fill="#070b12" stroke="#1e293b" stroke-width="1" />
+  <text x="40" y="118" fill="#38bdf8" font-size="13" class="mono">&gt; /plugin marketplace add ellmos-ai/ellmos-plugins</text>
+  <text x="40" y="139" fill="#10b981" font-size="12.5" class="mono">  ✓ Added marketplace "ellmos" (5 plugins registered from .claude-plugin/marketplace.json)</text>
+  <text x="40" y="164" fill="#38bdf8" font-size="13" class="mono">&gt; /plugin install ellmos-lock-master@ellmos  &amp;&amp;  /plugin install ellmos-dev-quality@ellmos</text>
+  <text x="40" y="185" fill="#10b981" font-size="12.5" class="mono">  ✓ ellmos-lock-master pinned @ tag v1.9.0 (sha d11333ea...f7cfe966ed9)</text>
+  <text x="40" y="202" fill="#cbd5e1" font-size="12.5" class="mono">  ✓ ellmos-dev-quality v0.3.1 ready (6 skills: bugsweep, bugfix-protocol, zipper-merge, ...)</text>
+
+  <!-- Section 2: Local Manifest & Contract Verification -->
+  <text x="28" y="236" fill="#94a3b8" font-size="11" font-weight="700" letter-spacing="1.2" class="sans">2. MANIFEST, CONTRACT &amp; LINT VERIFICATION</text>
+  <rect x="24" y="246" width="832" height="128" rx="8" fill="#070b12" stroke="#1e293b" stroke-width="1" />
+  <text x="40" y="270" fill="#a5b4fc" font-size="13" class="mono">$ claude plugin validate .</text>
+  <text x="40" y="290" fill="#cbd5e1" font-size="12.5" class="mono">Validating marketplace manifest: .claude-plugin/marketplace.json</text>
+  <text x="40" y="309" fill="#10b981" font-size="12.5" font-weight="700" class="mono">√ Validation passed</text>
+  <text x="40" y="334" fill="#a5b4fc" font-size="13" class="mono">$ pytest -ra -v  &amp;&amp;  ruff check .</text>
+  <text x="40" y="355" fill="#10b981" font-size="12.5" class="mono">============================= 19 passed in 1.13s ==============================</text>
+  <text x="40" y="370" fill="#10b981" font-size="12.5" class="mono">All checks passed! (catalog parity, security pin SHA, Claude directory file-type gate)</text>
+
+  <!-- Section 3: Plugin Catalog Overview Cards -->
+  <text x="28" y="400" fill="#94a3b8" font-size="11" font-weight="700" letter-spacing="1.2" class="sans">3. CATALOG OVERVIEW (SINGLE SOURCE: catalog.json)</text>
+
+  <!-- Card 1 -->
+  <rect x="24" y="412" width="268" height="96" rx="8" fill="#111827" stroke="#312e81" stroke-width="1.2" />
+  <text x="38" y="434" fill="#a5b4fc" font-size="12.5" font-weight="700" class="mono">Security &amp; Workflow Hooks</text>
+  <text x="38" y="454" fill="#e2e8f0" font-size="12" class="mono">• ellmos-lock-master (v1.9.0)</text>
+  <text x="38" y="473" fill="#e2e8f0" font-size="12" class="mono">• workflowhooker (closing gate)</text>
+  <text x="38" y="495" fill="#10b981" font-size="11" class="sans">External pinned repos · PreToolUse</text>
+
+  <!-- Card 2 -->
+  <rect x="306" y="412" width="268" height="96" rx="8" fill="#111827" stroke="#1e3a8a" stroke-width="1.2" />
+  <text x="320" y="434" fill="#7dd3fc" font-size="12.5" font-weight="700" class="mono">Engineering &amp; Diagram QA</text>
+  <text x="320" y="454" fill="#e2e8f0" font-size="12" class="mono">• ellmos-dev-quality (6 skills)</text>
+  <text x="320" y="473" fill="#e2e8f0" font-size="12" class="mono">• ellmos-mermaid-lint (parser QA)</text>
+  <text x="320" y="495" fill="#38bdf8" font-size="11" class="sans">Generated via tools/build.py</text>
+
+  <!-- Card 3 -->
+  <rect x="588" y="412" width="268" height="96" rx="8" fill="#111827" stroke="#065f46" stroke-width="1.2" />
+  <text x="602" y="434" fill="#6ee7b7" font-size="12.5" font-weight="700" class="mono">Structured Decision Kit</text>
+  <text x="602" y="454" fill="#e2e8f0" font-size="12" class="mono">• ellmos-decision-kit (5 skills)</text>
+  <text x="602" y="473" fill="#e2e8f0" font-size="12" class="mono">  decide · briefing · path · draw</text>
+  <text x="602" y="495" fill="#10b981" font-size="11" class="sans">Zero scripts · Claude directory ready</text>
+
+  <!-- Footer -->
+  <text x="24" y="527" fill="#64748b" font-size="11" class="sans">Landing Page: https://ellmos-ai.github.io/plugins.html · License: MIT · Concept &amp; Sign-off: Geiger</text>
+</svg>

@@ -5,7 +5,7 @@ description: "Use when installing, validating, or building plugins from the ellm
 
 # ellmos-plugins
 
-Product skill for working with the **ellmos** Claude Code plugin marketplace (`ellmos-ai/ellmos-plugins`).
+Product skill for working with the **ellmos** Claude Code plugin marketplace (`ellmos-ai/ellmos-plugins`, landing page: `https://ellmos-ai.github.io/plugins.html`).
 
 ## Marketplace Plugins
 
@@ -25,15 +25,19 @@ Product skill for working with the **ellmos** Claude Code plugin marketplace (`e
 ## Build & Validation Workflow (Contributors)
 
 - Single source of truth: `catalog.json` (never edit `plugins/` manually).
+- Create an isolated `.venv` and install dev dependencies:
+  `python -m venv .venv && .venv/bin/python -m pip install -e ".[dev]"` (Windows: `.venv\Scripts\python.exe`)
 - Regenerate skill plugins and `.claude-plugin/marketplace.json`:
   `python tools/build.py --skills-repo <path-to-ellmos-ai-skills>`
 - Validate marketplace manifest:
   `claude plugin validate .`
-- Run contract & build tests:
+- Run contract & build tests (19 tests):
   `pytest -ra -v`
 - Run linter:
   `ruff check .`
 
-## Security Pin Governance
+## Security Pin Governance & Boundaries
 
-Security-critical plugins such as `ellmos-lock-master` are pinned by both annotated tag (`ref`) and commit SHA (`sha`) in `catalog.json` and `.claude-plugin/marketplace.json`. Any pin update must follow the 5-step process documented in `README.md`.
+- Security-critical plugins such as `ellmos-lock-master` are pinned by both annotated tag (`ref`) and commit SHA (`sha`) in `catalog.json` and `.claude-plugin/marketplace.json`. Any pin update must follow the 5-step process documented in `README.md`.
+- Plugins submitted to the Claude directory may only contain `.md`, `.txt`, `.json`, `.yaml`, `.yml`, `.png`, `.jpg`, `.jpeg`, `.gif`, `.webp`, `.ico`, and `LICENSE` (no `#!` scripts).
+- Visual architecture & CLI reference: `assets/terminal-workflow.svg` and `llms.txt`.
