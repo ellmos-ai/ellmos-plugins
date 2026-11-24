@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 import yaml
@@ -138,5 +139,73 @@ def test_readme_bilingual_parity_and_banner_preserved() -> None:
 
     assert "README_de.md" in en
     assert "README.md" in de
-    assert "### Install with your LLM" in en
-    assert "### Mit deinem LLM installieren" in de
+    assert "### Install with your LLM" in en or "## 6. Install with Your LLM" in en
+    assert "### Mit deinem LLM installieren" in de or "## 6. Mit deinem LLM installieren" in de
+
+
+def test_terminal_workflow_svg_asset_valid_and_embedded() -> None:
+    svg_path = ROOT / "assets" / "terminal-workflow.svg"
+    assert svg_path.is_file()
+    tree = ET.fromstring(svg_path.read_text(encoding="utf-8"))
+    assert tree.tag.endswith("svg")
+
+    for doc in ("README.md", "README_de.md"):
+        content = _read_text(doc)
+        assert '<img src="assets/banner.svg"' in content
+        assert '<img src="assets/terminal-workflow.svg"' in content
+
+
+def test_readme_mermaid_architecture_and_sequence_diagrams() -> None:
+    for doc in ("README.md", "README_de.md"):
+        content = _read_text(doc)
+        assert "```mermaid\nflowchart LR" in content
+        assert "```mermaid\nsequenceDiagram" in content
+        seq_blocks = re.findall(r"```mermaid\n(sequenceDiagram.*?)```", content, flags=re.S)
+        assert seq_blocks
+        for block in seq_blocks:
+            assert ";" not in block
+
+
+def test_readme_ten_section_navigation_and_badges_parity() -> None:
+    for doc in ("README.md", "README_de.md"):
+        content = _read_text(doc)
+        for idx in range(1, 11):
+            anchor = f"sec-{idx:02d}"
+            assert f'<a id="{anchor}"></a>' in content
+            assert f"(#{anchor})" in content
+        assert "2026--11--24" in content
+        assert "https://ellmos-ai.github.io/plugins.html" in content
+
+
+def test_readme_public_ai_attribution_geiger() -> None:
+    en = _read_text("README.md")
+    de = _read_text("README_de.md")
+    assert "Concept & Sign-off: Geiger" in en
+    assert "Idee & Abnahme: Geiger" in de
+    assert "Sign-off: LG" not in en
+    assert "Abnahme: LG" not in de
+
+
+def test_p022_llms_txt_quick_install_and_last_checked() -> None:
+    llms = _read_text("llms.txt")
+    assert "Last-checked: 2026-11-24" in llms
+    assert "## Quick Install & Verification" in llms
+    for required in ("Prerequisites", "Installation", "Verification", "Minimal Example", "claude plugin validate ."):
+        assert required in llms
+
+
+def test_pyproject_version_frozen_and_discoverability_urls() -> None:
+    pyproject = tomllib.loads(_read_text("pyproject.toml"))
+    project = pyproject["project"]
+    assert project["version"] == "0.1.0"
+
+    urls = project["urls"]
+    for key in ("Documentation", "Product Skill", "LLM Entrypoint"):
+        assert key in urls and urls[key].startswith("https://")
+
+
+def test_changelog_unreleased_path_b_entry() -> None:
+    changelog = _read_text("CHANGELOG.md")
+    assert "## [Unreleased]" in changelog
+    for token in ("2026-11-24", "assets/terminal-workflow.svg", "sequenceDiagram", "sec-01"):
+        assert token in changelog

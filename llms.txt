@@ -2,12 +2,16 @@
 
 > The ellmos Claude Code plugin marketplace (`ellmos-ai/ellmos-plugins`): coordination plugins for mixed agent teams, workflow gates, and reusable Agent Skills.
 
+Last-checked: 2026-11-24
+
 ## Quick Entrypoints
 
 - Marketplace manifest: `.claude-plugin/marketplace.json`
 - Single catalog source: `catalog.json`
 - Build generator: `tools/build.py` (Python >= 3.10, requires `PyYAML>=6.0`)
 - Product skill: `SKILL.md`
+- Terminal visual preview: `assets/terminal-workflow.svg`
+- Landing page: `https://ellmos-ai.github.io/plugins.html`
 - Documentation: `README.md` (EN), `README_de.md` (DE)
 - Governance: `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`, `CHANGELOG.md`
 
@@ -19,7 +23,10 @@
 - `ellmos-mermaid-lint` (`v0.1.0`, `./plugins/ellmos-mermaid-lint`): `mermaid-lint` (marketplace only, installs `mermaid`, `jsdom`, `playwright-core` when run).
 - `ellmos-decision-kit` (`v0.2.0`, `./plugins/ellmos-decision-kit`): `decide`, `decision-briefing`, `decision-shot`, `decision-path`, `decision-draw`.
 
-## Install & Verify
+## Quick Install & Verification
+
+- **Prerequisites:** Claude Code CLI (`claude`) for marketplace plugin installation; Python `>= 3.10` + `PyYAML>=6.0` (isolated `.venv` recommended) for local catalog building and contract verification.
+- **Installation:** Add the marketplace in Claude Code or set up a local `.venv` for repository verification:
 
 ```text
 /plugin marketplace add ellmos-ai/ellmos-plugins
@@ -28,12 +35,25 @@
 /plugin install ellmos-decision-kit@ellmos
 ```
 
-## Development & Verification Commands
+```bash
+python -m venv .venv
+.venv/bin/python -m pip install -e ".[dev]"
+```
 
-- Build generated plugins from `catalog.json` and `ellmos-ai/skills`: `python tools/build.py --skills-repo <path>`
-- Validate marketplace manifest: `claude plugin validate .`
-- Run contract tests: `pytest -ra -v`
-- Lint Python files: `ruff check .`
+- **Verification:** Validate the marketplace manifest, run contract tests (19 tests), and lint:
+
+```bash
+claude plugin validate .
+pytest -ra -v
+ruff check .
+```
+
+- **Minimal Example:** Rebuild skill plugins from a local `ellmos-ai/skills` checkout and verify `.claude-plugin/marketplace.json`:
+
+```bash
+python tools/build.py --skills-repo ../skills
+claude plugin validate .
+```
 
 ## Rules & Constraints
 
